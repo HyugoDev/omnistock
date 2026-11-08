@@ -1,0 +1,12 @@
+[submodule "auth-service"]
+	path = auth-service
+	url = https://github.com/HyugoDev/omnistock-auth-service.git
+	branch = main
+[submodule "inventory-backend"]
+	path = inventory-backend
+	url = https://github.com/HyugoDev/omnistock-core-backend.git
+	branch = main
+[submodule "inventory-frontend"]
+	path = inventory-frontend
+	url = https://github.com/HyugoDev/omnistock-frontend.git
+	branch = main

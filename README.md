@@ -1,44 +1,53 @@
-# 🚀 Sistema de Gestión de Inventario y Ventas (POS)
-> **Fullstack Application**: Java 21 (Spring Boot 3) + Angular 19+
+# 📦 OmniStock Enterprise WMS
 
-Bienvenido al repositorio central del proyecto. Este repositorio contiene tanto la API REST (Backend) como la aplicación web cliente (Frontend).
-
----
-
-## 📁 Estructura del Repositorio
-
-* **[`inventory-backend/`](./inventory-backend)**: API REST desarrollada en Spring Boot 3 con Spring Data JPA y base de datos H2.
-* **[`inventory-frontend/`](./inventory-frontend)**: Cliente SPA desarrollado en Angular 19 con componentes Standalone y Tailwind CSS.
-* **[`ARQUITECTURA_Y_DISENO.md`](./ARQUITECTURA_Y_DISENO.md)**: 📄 Documento técnico completo con diagramas de arquitectura, modelo ER de base de datos, contratos de endpoints REST y roadmap.
-* **[`CONFIG.md`](./CONFIG.md)**: ⚙️ Guía de configuración base en local (puertos, H2, CORS, variables y troubleshooting).
+> **Ultra Inventario & Sistema de Gestión Integral Multi-Sucursal**  
+> Arquitectura Polyglot de Microservicios: **Angular 19** + **Bun/Hono (Better Auth)** + **Java 21 (Spring Boot 3)** + **PostgreSQL** + **Docker**.
 
 ---
 
-## 🛠️ Requisitos Previos
+## 🏛️ Estructura de Submódulos
 
-* **Java JDK:** Versión 17 o 21 LTS
-* **Node.js:** Versión 20+ o 24 LTS
-* **Angular CLI:** `npm install -g @angular/cli` o `pnpm install -g @angular/cli`
-* **Gestor de paquetes:** `npm` o `pnpm`
+Este repositorio principal actúa como el **orquestador central** del ecosistema OmniStock. Cada servicio se versiona y mantiene en su propio repositorio independiente:
+
+| Módulo / Carpeta | Repositorio GitHub | Tecnologías Clave | Responsabilidad |
+| :--- | :--- | :--- | :--- |
+| **[`auth-service/`](./auth-service)** | [omnistock-auth-service](https://github.com/HyugoDev/omnistock-auth-service) | Bun, Hono, Better Auth, Drizzle ORM | Autenticación, RBAC (roles), emisión de JWT EdDSA |
+| **[`inventory-backend/`](./inventory-backend)** | [omnistock-core-backend](https://github.com/HyugoDev/omnistock-core-backend) | Java 21, Spring Boot 3, Spring Data JPA | Lógica WMS, Kardex, POS, control de stock concurrente |
+| **[`inventory-frontend/`](./inventory-frontend)** | [omnistock-frontend](https://github.com/HyugoDev/omnistock-frontend) | Angular 19, Signals, Tailwind CSS | Interfaz SPA, Punto de Venta, Dashboard analítico |
 
 ---
 
-## ⚡ Ejecución Rápida
+## ⚡ Despliegue Rápido con Docker
 
-### 1. Iniciar el Backend (Spring Boot)
-Desde IntelliJ IDEA: Ejecutar la clase principal `InventoryBackendApplication.java`  
-O por consola:
-```powershell
-cd inventory-backend
-./mvnw spring-boot:run
+Para levantar la infraestructura completa (PostgreSQL, Auth Service, Core Service y Frontend):
+
+```bash
+# 1. Clonar el orquestador con todos sus submódulos
+git clone --recurse-submodules https://github.com/HyugoDev/omnistock.git
+cd omnistock
+
+# 2. Configurar variables de entorno
+cp .env.example .env
+
+# 3. Levantar todos los servicios en contenedores
+docker compose up --build -d
 ```
-*API disponible en:* `http://localhost:8080/api/v1`  
-*Consola H2 en:* `http://localhost:8080/h2-console`
 
-### 2. Iniciar el Frontend (Angular)
-Por consola:
-```powershell
-cd inventory-frontend
-ng serve -o
+### Puertos en Local:
+* 🌐 **Frontend (Angular):** [http://localhost:4200](http://localhost:4200)
+* 🔐 **Auth Service (Bun/Hono):** [http://localhost:4000](http://localhost:4000)
+* ⚙️ **Core Service (Spring Boot):** [http://localhost:8080](http://localhost:8080)
+* 🗄️ **Base de Datos (PostgreSQL):** `localhost:5432`
+
+---
+
+## 🔄 Actualización de Submódulos
+
+Si realizas cambios en los repositorios individuales y deseas congelar y actualizar la versión en este repositorio principal:
+
+```bash
+git submodule update --remote
+git add .
+git commit -m "chore: bump submodules to latest stable release"
+git push origin main
 ```
-*App disponible en:* `http://localhost:4200`
