@@ -11,9 +11,9 @@ Este repositorio principal actúa como el **orquestador central** del ecosistema
 
 | Módulo / Carpeta | Repositorio GitHub | Tecnologías Clave | Responsabilidad |
 | :--- | :--- | :--- | :--- |
-| **[`auth-service/`](./auth-service)** | [omnistock-auth-service](https://github.com/HyugoDev/omnistock-auth-service) | Bun, Hono, Better Auth, Drizzle ORM | Autenticación, RBAC (roles), emisión de JWT EdDSA |
-| **[`inventory-backend/`](./inventory-backend)** | [omnistock-core-backend](https://github.com/HyugoDev/omnistock-core-backend) | Java 21, Spring Boot 3, Spring Data JPA | Lógica WMS, Kardex, POS, control de stock concurrente |
-| **[`inventory-frontend/`](./inventory-frontend)** | [omnistock-frontend](https://github.com/HyugoDev/omnistock-frontend) | Angular 19, Signals, Tailwind CSS | Interfaz SPA, Punto de Venta, Dashboard analítico |
+| **[`omnistock-auth-service/`](./omnistock-auth-service)** | [omnistock-auth-service](https://github.com/HyugoDev/omnistock-auth-service) | Bun, Hono, Better Auth, Drizzle ORM | Autenticación, RBAC (roles), emisión de JWT EdDSA |
+| **[`omnistock-core-backend/`](./omnistock-core-backend)** | [omnistock-core-backend](https://github.com/HyugoDev/omnistock-core-backend) | Java 21, Spring Boot 3, Spring Data JPA | Lógica WMS, Kardex, POS, control de stock concurrente |
+| **[`omnistock-frontend/`](./omnistock-frontend)** | [omnistock-frontend](https://github.com/HyugoDev/omnistock-frontend) | Angular 19, Signals, Tailwind CSS | Interfaz SPA, Punto de Venta, Dashboard analítico |
 
 ---
 

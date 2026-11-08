@@ -29,7 +29,7 @@ services:
   # ==========================================
   auth-service:
     build:
-      context: ./auth-service
+      context: ./omnistock-auth-service
       dockerfile: Dockerfile
     container_name: omnistock-auth-service
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
   # ==========================================
   core-service:
     build:
-      context: ./inventory-backend
+      context: ./omnistock-core-backend
       dockerfile: Dockerfile
     container_name: omnistock-core-service
     restart: unless-stopped
@@ -78,7 +78,7 @@ services:
   # ==========================================
   frontend:
     build:
-      context: ./inventory-frontend
+      context: ./omnistock-frontend
       dockerfile: Dockerfile
     container_name: omnistock-frontend
     restart: unless-stopped
